@@ -1,0 +1,34 @@
+#sidebar-left {
+  height: 100vh;
+  border-right-style: none;
+}
+
+#sidebar-left-icon {
+  color: white;
+}
+  
+@keyframes slide-in-x {
+  from {
+    transform: translateX(-100%);
+    opacity: 0.25;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+  
+.slide-in-x {
+  animation: slide-in-x 1500ms;
+  animation-delay: 250ms;
+  animation-fill-mode: backwards;
+}
+  
+.link {
+  opacity: 0.4;
+}
+
+.active-link {
+  opacity: 1;
+  font-weight: 500;
+}

@@ -3,15 +3,10 @@
   display: flex;
 }
 
-/* ----- sidebar ----- */
-#sidebar-left {
-  height: 100vh;
+.purple {
+  color: #6c42f5;
 }
 
-#brand {
-  padding: 0 0 8vh 30px;
-  margin: 0;
-  color: rgba(125 125 125 / 0.8);
-  font-weight: 500;
+.purple-bg {
+  background-color: #6c42f5;
 }
-/* ----- sidebar ----- */
