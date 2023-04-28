@@ -1,3 +1,7 @@
+# Dev
+import sys
+sys.path.insert(0, '../../../api')
+
 from browser import Browser
 import path
 from selenium.webdriver.common.by import By
@@ -87,5 +91,3 @@ class Vanguard:
                     account.update({'holdings': amount})
             accounts.append(account)
         return accounts
-                
-
