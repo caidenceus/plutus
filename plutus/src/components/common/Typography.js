@@ -69,6 +69,16 @@ function Typography(props) {
   if (props.fontWeight) {
     style.fontWeight = props.fontWeight;
   }
+  if (props.margin) {
+    style.marginTop = props.margin;
+    style.marginBottom = props.margin;
+  } else {
+    style.marginTop = "16px";
+    style.marginBottom = "16px";
+  }
+  if (props.opacity) {
+    style.opacity = props.opacity;
+  }
 
   return (
     <p style={style}>

@@ -12,8 +12,10 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import SportsScoreIcon from '@mui/icons-material/SportsScore';
 import SettingsIcon from '@mui/icons-material/Settings';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { Link } from 'react-router-dom';
 
 import Typeogrphy from './Typography.js';
+import { colors } from './colors.js';
 import './LeftSidebar.css';
 
 function LeftSidebar() {
@@ -30,10 +32,9 @@ function LeftSidebar() {
       rootStyles={{
         [`.${sidebarClasses.container}`]: {
           backgroundColor: 'white',
-          border: 'none'
         },
     }}>
-      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%', color: colors.darkTeal }}>
         <Menu id="menu-left">
           <MenuItem
             icon={<MenuOutlinedIcon />}
@@ -43,6 +44,7 @@ function LeftSidebar() {
             }}
             id="sidebar-left-icon"
             className="purple-bg"
+            style={{backgroundColor: colors.darkTeal}}
           />
             <div  
               style={{
@@ -54,7 +56,7 @@ function LeftSidebar() {
               <Typeogrphy 
                 variant={"subtitle1"}
                 color={"rgba(125 125 125 / 0.8)"}
-                fontWeight={"400"}
+                fontWeight={"500"}
               >
                 The Plutus Group
               </Typeogrphy>
@@ -64,6 +66,7 @@ function LeftSidebar() {
             className={activeLink === 'home' ? 'active-link link purple' : 'link purple'}
             icon={<HomeOutlinedIcon />}
             onClick={() => handleActiveLink('home')}
+            component={<Link to="/" />}
           >
             Home
           </MenuItem>
@@ -71,6 +74,7 @@ function LeftSidebar() {
             className={activeLink === 'accounts' ? 'active-link link purple' : 'link purple'}
             icon={<AccountBalanceIcon />}
             onClick={() => handleActiveLink('accounts')}
+            component={<Link to="/accounts" />}
           >
             Financial Accounts
           </MenuItem>
@@ -78,6 +82,7 @@ function LeftSidebar() {
             className={activeLink === 'goals' ? 'active-link link purple' : 'link purple'}
             icon={<SportsScoreIcon />}
             onClick={() => handleActiveLink('goals')}
+            component={<Link to="/goals" />}
           >
             Financial Goals
           </MenuItem>
@@ -85,6 +90,7 @@ function LeftSidebar() {
             className={activeLink === 'settings' ? 'active-link link purple' : 'link purple'}
             icon={<SettingsIcon />}
             onClick={() => handleActiveLink('settings')}
+            component={<Link to="/settings" />}
           >
             Account Settings
           </MenuItem>
