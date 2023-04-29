@@ -26,4 +26,5 @@
 .active-link {
   opacity: 1;
   font-weight: 700;
+  border-right: 3px solid #073b4c;
 }
