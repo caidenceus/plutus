@@ -1,18 +1,24 @@
-import Typography from "../common/Typography";
+import { Typography, Box, useTheme } from "@mui/material";
+import { tokens } from "../../theme";
 
-function Header() {
+const Header = ({ title, subtitle }) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   return (
-    <div style={{display: "flex", padding: "0 50px", justifyContent: "space-between"}}>
-      <Typography variant={"h5"} fontWeight={"600"}>
-        Overview
+    <Box mb="30px">
+      <Typography
+        variant="h2"
+        color={colors.gray[100]}
+        fontWeight="bold"
+        sx={{ m: "0 0 5px 0" }}
+      >
+        {title}
       </Typography>
-      <Typography variant={"h6"} fontWeight={"500"} opacity={"0.6"}>
-        {new Date().toLocaleDateString(
-          'en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
-        }
+      <Typography variant="h5" color={colors.greenAccent[400]}>
+        {subtitle}
       </Typography>
-    </div>
+    </Box>
   );
-}
+};
 
 export default Header;

@@ -1,5 +1,6 @@
 import RetirementPieChart from "../RetirementPieChart";
 import NetWorthLineGraph from "../NetWorthLineGraph"
+import Expenses from './Expenses';
 import  { colors } from '../common/colors'
 
 function Graphs() {
@@ -8,7 +9,7 @@ function Graphs() {
         "id": "goal",
         "label": "Retirement goal",
         "value": 1000000,
-        "color": colors.darkTeal
+        "color": colors.teal
       },
       {
         "id": "savings",
@@ -17,63 +18,6 @@ function Graphs() {
         "color": colors.red
       }
     ]
-
-    const netWorthLineData = [
-        {
-          "id": "Worth",
-          "color": "hsl(289, 70%, 50%)",
-          "data": [
-            {
-              "x": "Jan",
-              "y": 135
-            },
-            {
-              "x": "Feb",
-              "y": 205
-            },
-            {
-              "x": "Mar",
-              "y": 152
-            },
-            {
-              "x": "Apr",
-              "y": 144
-            },
-            {
-              "x": "May",
-              "y": 184
-            },
-            {
-              "x": "Jun",
-              "y": 286
-            },
-            {
-              "x": "Jul",
-              "y": 179
-            },
-            {
-              "x": "Aug",
-              "y": 166
-            },
-            {
-              "x": "Sep",
-              "y": 0
-            },
-            {
-              "x": "Oct",
-              "y": 77
-            },
-            {
-              "x": "Nov",
-              "y": 33
-            },
-            {
-              "x": "Dec",
-              "y": 83
-            }
-          ]
-        }
-      ]
     
     const graphTileStyle = {
         backgroundColor: "white",
@@ -95,7 +39,7 @@ function Graphs() {
         </div>
         <div style={{display: "flex", justifyContent: "space-between", padding: "0 50px"}}>
           <div style={{...graphTileStyle, width: "42vw", height: "30vw"}}>
-            <NetWorthLineGraph data={netWorthLineData} />
+            <Expenses />
           </div>
           <div style={{...graphTileStyle, width: "30vw", height: "30vw"}}>
             <RetirementPieChart data={retirementSavingsPiData} />

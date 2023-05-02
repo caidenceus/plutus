@@ -1,23 +1,33 @@
 import LeftSidebar from './components/common/LeftSidebar';
+import { ColorModeContext, useMode } from './theme';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
+import TopBar from './components/common/TopBar';
 import Home from './components/home/Home';
-import Accounts from './components/accounts/Accounts';
-import Goals from './components/goals/Goals';
-import Settings from './components/settings/Settings';
+import Faq from './components/faq/Faq';
 
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+  const [theme, colorMode] = useMode();
+
   return (
-    <div id="app" style={{display: "flex", height: "100vh"}}>
-      <LeftSidebar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/accounts" element={<Accounts />} />
-        <Route path="/goals" element={<Goals />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline>
+          <div id="app" style={{ display: 'flex', height: '100%' }}>
+            <LeftSidebar  />
+            <main className="content" style={{ width: "100%" }}>
+              <TopBar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/faq" element={<Faq />} />
+              </Routes>
+            </main>
+          </div>
+        </CssBaseline>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 

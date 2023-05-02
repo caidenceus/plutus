@@ -3,6 +3,7 @@ import { ResponsiveLine } from '@nivo/line'
 const NetWorthLineGraph = ({ data }) => (
     <ResponsiveLine
         data={data}
+        colors={data => data.color}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{
