@@ -14,6 +14,7 @@ const NetWorthLineGraph = ({ data }) => (
             reverse: false
         }}
         yFormat=" >-.2f"
+        curve="cardinal"
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -39,11 +40,11 @@ const NetWorthLineGraph = ({ data }) => (
         lineWidth={6}
         pointSize={9}
         pointColor={{ from: 'color', modifiers: [] }}
-        pointBorderWidth={3}
+        pointBorderWidth={1}
         pointBorderColor={{ from: 'serieColor' }}
-        enablePointLabel={true}
+        enablePointLabel={false}
         pointLabelYOffset={-18}
-        enableArea={true}
+        enableArea={false}
         areaOpacity={0.3}
         useMesh={true}
         legends={[

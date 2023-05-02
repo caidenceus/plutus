@@ -2,14 +2,35 @@ import { Box, Button, IconButton, Typography, useTheme } from '@mui/material';
 import { tokens } from '../../theme';
 import Header from "./Header";
 import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
-import EmailIcon from '@mui/icons-material/Email';
-import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import TrafficIcon from '@mui/icons-material/Traffic';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import MoneyOffIcon from '@mui/icons-material/MoneyOff';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import FunctionsIcon from '@mui/icons-material/Functions';
 import RetirementPieChart from '../common/RetirementPieChart';
 import NetWorthLineGraph from '../common/NetWorthLineGraph';
 import StatBox from '../common/StatBox';
-import ProgressCircle from '../common/ProgressCircle';
+
+function StatBoxContainer({ title, subtitle, progress, increase, icon }) {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
+  return (
+    <Box
+      gridColumn="span 3"
+      backgroundColor={colors.primary[900]}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <StatBox
+        title={title}
+        subtitle={subtitle}
+        increase={increase}
+        icon={icon}
+      />
+    </Box>
+  );
+}
 
 function Home() {
   const theme = useTheme();
@@ -17,7 +38,7 @@ function Home() {
 
   const netWorthLineData = [
     {
-      "id": "Worth",
+      "id": "Net Worth",
       "color": colors.greenAccent[500],
       "data": [
         {
@@ -69,7 +90,115 @@ function Home() {
           "y": 83
         }
       ]
-    }
+    },
+    {
+      "id": "Net Income",
+      "color": colors.blueAccent[400],
+      "data": [
+        {
+          "x": "Jan",
+          "y": 101
+        },
+        {
+          "x": "Feb",
+          "y": 20
+        },
+        {
+          "x": "Mar",
+          "y": 225
+        },
+        {
+          "x": "Apr",
+          "y": 286
+        },
+        {
+          "x": "May",
+          "y": 188
+        },
+        {
+          "x": "Jun",
+          "y": 163
+        },
+        {
+          "x": "Jul",
+          "y": 189
+        },
+        {
+          "x": "Aug",
+          "y": 89
+        },
+        {
+          "x": "Sep",
+          "y": 132
+        },
+        {
+          "x": "Oct",
+          "y": 277
+        },
+        {
+          "x": "Nov",
+          "y": 204
+        },
+        {
+          "x": "Dec",
+          "y": 91
+        }
+      ]
+    },
+    {
+      "id": "Net Spending",
+      "color": colors.redAccent[400],
+      "data": [
+        {
+          "x": "Jan",
+          "y": 99
+        },
+        {
+          "x": "Feb",
+          "y": 159
+        },
+        {
+          "x": "Mar",
+          "y": 55
+        },
+        {
+          "x": "Apr",
+          "y": 6
+        },
+        {
+          "x": "May",
+          "y": 192
+        },
+        {
+          "x": "Jun",
+          "y": 223
+        },
+        {
+          "x": "Jul",
+          "y": 189
+        },
+        {
+          "x": "Aug",
+          "y": 127
+        },
+        {
+          "x": "Sep",
+          "y": 184
+        },
+        {
+          "x": "Oct",
+          "y": 257
+        },
+        {
+          "x": "Nov",
+          "y": 16
+        },
+        {
+          "x": "Dec",
+          "y": 41
+        }
+      ]
+    },
   ]
 
   const retirementSavingsPiData = [
@@ -117,88 +246,36 @@ function Home() {
         gap="20px"
       >
         {/* ROW 1 */}
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title="12,361"
-            subtitle="Emails Sent"
-            progress="0.75"
-            increase="+14%"
-            icon={
-              <EmailIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title="431,225"
-            subtitle="Sales Obtained"
-            progress="0.50"
-            increase="+21%"
-            icon={
-              <PointOfSaleIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title="32,441"
-            subtitle="New Clients"
-            progress="0.30"
-            increase="+5%"
-            icon={
-              <PersonAddIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title="1,325,134"
-            subtitle="Traffic Received"
-            progress="0.80"
-            increase="+43%"
-            icon={
-              <TrafficIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
+        <StatBoxContainer
+          title="12,361"
+          subtitle="Monthly Income"
+          increase="+14%"
+          icon={<AttachMoneyIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }}/>}
+        />
+        <StatBoxContainer
+          title="431,225"
+          subtitle="Monthly Spending"
+          increase="+21%"
+          icon={<MoneyOffIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }}/>}
+        />
+        <StatBoxContainer
+          title="32,441"
+          subtitle="Monthly Net Worth"
+          increase="+5%"
+          icon={<FunctionsIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }}/>}
+        />
+        <StatBoxContainer
+          title="1,325,134"
+          subtitle="Monthly ROI"
+          increase="+43%"
+          icon={<TrendingUpIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }}/>}
+        />
 
-        { /* ROW 2 */ }
+        { /* ROW 2 --- Net Worth Graph */ }
         <Box
           gridColumn="span 8"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor={colors.primary[900]}
         >
           <Box
             mt="25px"
@@ -228,10 +305,12 @@ function Home() {
             <NetWorthLineGraph data={netWorthLineData} />
           </Box>
         </Box>
+
+        { /* ROW 2 --- Spending List */ }
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor={colors.primary[900]}
           overflow="auto"
         >
           <Box

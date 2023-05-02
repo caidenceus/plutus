@@ -16,6 +16,7 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 import profilePhoto from '../../assets/profile.png';
+import './LeftSidebar.css';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -48,8 +49,7 @@ const LeftSidebar = () => {
         collapsed={isCollapsed}
         rootStyles={{
           [`.${sidebarClasses.container}`]: {
-            backgroundColor: colors.gray[900],
-
+            backgroundColor: colors.gray[900]
           },
         }}
       >
@@ -128,27 +128,30 @@ const LeftSidebar = () => {
             >
               General
             </Typography>
-            <Item
-              title="Banking"
-              to="/banking"
+            <MenuItem
+              component={<Link to="/banking" />}
               icon={<SavingsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Investments"
-              to="/investments"
+              active={selected === 'banking'}
+              onClick={() => setSelected('banking')}
+            >
+              Banking
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/investments" />}
               icon={<PaidOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Goals"
-              to="/goals"
+              active={selected === 'investments'}
+              onClick={() => setSelected('investments')}
+            >
+              Investments
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/goal" />}
               icon={<SportsScoreOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+              active={selected === 'goal'}
+              onClick={() => setSelected('goal')}
+            >
+              Goal
+            </MenuItem>
 
             <Typography
               variant="h6"
@@ -157,17 +160,18 @@ const LeftSidebar = () => {
             >
               Settings
             </Typography>
-            <Item
-              title="Profile"
-              to="/profile"
+            <MenuItem
+              component={<Link to="/profile" />}
               icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+              active={selected === 'profile'}
+              onClick={() => setSelected('profile')}
+            >
+              Profile
+            </MenuItem>
             <MenuItem
               component={<Link to="/financial-accounts" />}
               icon={<AccountBalanceOutlinedIcon />}
-              selected={selected === 'financial-accounts'}
+              active={selected === 'financial-accounts'}
               onClick={() => setSelected('financial-accounts')}
             >
               Financial accounts
@@ -175,8 +179,8 @@ const LeftSidebar = () => {
             <MenuItem
               component={<Link to="/faq" />}
               icon={<HelpOutlineOutlinedIcon />}
-              selected={selected === 'faq'}
-              onClick={() => setSelected('faq')}
+              className={(selected === 'faq') && 'active-link'}
+              onClick={() => setSelected('financial-accounts')}
             >
               FAQ
             </MenuItem>
@@ -188,27 +192,30 @@ const LeftSidebar = () => {
             >
               Visualization
             </Typography>
-            <Item
-              title="Retirement graph"
-              to="/retirement-graph"
+            <MenuItem
+              component={<Link to="/retirement-graph" />}
               icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Goal charts"
-              to="/goal-charts"
-              icon={<PieChartOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Income to spending"
-              to="/income-to-spending"
+              active={selected === 'retirement-graph'}
+              onClick={() => setSelected('retirement-graph')}
+            >
+              Retirement Graph
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/goal-charts" />}
+              icon={<SportsScoreOutlinedIcon />}
+              active={selected === 'goal-charts'}
+              onClick={() => setSelected('goal-charts')}
+            >
+              Goal Charts
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/income-to-spending" />}
               icon={<TimelineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+              active={selected === 'income-to-spending'}
+              onClick={() => setSelected('income-to-spending')}
+            >
+              Income to Spending
+            </MenuItem>
           </Box>
         </Menu>
       </Sidebar>
