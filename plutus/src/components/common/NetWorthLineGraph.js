@@ -1,8 +1,44 @@
-import { ResponsiveLine } from '@nivo/line'
+import { ResponsiveLine } from '@nivo/line';
+import { useTheme } from '@mui/material';
 
-const NetWorthLineGraph = ({ data }) => (
+import { tokens } from '../../theme';
+
+function NetWorthLineGraph ({ data }) {
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+
+    return (
+    <>
     <ResponsiveLine
         data={data}
+        theme={{
+            axis: {
+                domain: {
+                    line: {
+                        stroke: colors.blue[100]
+                    }
+                },
+                legend: {
+                    text: {
+                        fill: colors.blue[100]
+                    }
+                },
+                ticks: {
+                    line: {
+                        stroke: colors.blue[100],
+                        strokeWidth: 1
+                    },
+                    text: {
+                        fill: colors.blue[100]
+                    }
+                }
+            },
+            legends: {
+                text: {
+                    fill: colors.blue[100]
+                }
+            }
+        }}
         colors={data => data.color}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
@@ -22,19 +58,11 @@ const NetWorthLineGraph = ({ data }) => (
             tickSize: 3,
             tickPadding: 8,
             tickRotation: -48,
-            legend: 'Month',
+            legend: '',
             legendOffset: 36,
             legendPosition: 'middle'
         }}
-        axisLeft={{
-            orient: 'left',
-            tickSize: 3,
-            tickPadding: 20,
-            tickRotation: 0,
-            legend: 'Dollar Amount',
-            legendOffset: -52,
-            legendPosition: 'middle'
-        }}
+
         enableGridX={false}
         enableGridY={false}
         lineWidth={6}
@@ -44,15 +72,15 @@ const NetWorthLineGraph = ({ data }) => (
         pointBorderColor={{ from: 'serieColor' }}
         enablePointLabel={false}
         pointLabelYOffset={-18}
-        enableArea={false}
-        areaOpacity={0.3}
+        enableArea={true}
+        areaOpacity={0.1}
         useMesh={true}
         legends={[
             {
                 anchor: 'bottom-right',
                 direction: 'column',
                 justify: false,
-                translateX: 109,
+                translateX: 100,
                 translateY: 0,
                 itemsSpacing: 2,
                 itemDirection: 'left-to-right',
@@ -74,6 +102,7 @@ const NetWorthLineGraph = ({ data }) => (
             }
         ]}
     />
-)
+    </>)
+}
 
 export default NetWorthLineGraph;

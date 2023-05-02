@@ -11,30 +11,11 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceOutlinedIcon from "@mui/icons-material/AccountBalanceOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
-import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 import profilePhoto from '../../assets/profile.png';
 import './LeftSidebar.css';
-
-const Item = ({ title, to, icon, selected, setSelected }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  return (
-    <MenuItem
-      active={selected === title}
-      style={{
-        color: colors.gray[400],
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      <Typography>{title}</Typography>
-      <Link to={to} />
-    </MenuItem>
-  );
-};
 
 const LeftSidebar = () => {
   const theme = useTheme();
@@ -49,7 +30,7 @@ const LeftSidebar = () => {
         collapsed={isCollapsed}
         rootStyles={{
           [`.${sidebarClasses.container}`]: {
-            backgroundColor: colors.gray[900]
+            backgroundColor: colors.blue[900]
           },
         }}
       >
@@ -63,7 +44,7 @@ const LeftSidebar = () => {
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
-              color: colors.gray[400],
+              color: colors.blue[400],
             }}
           >
             {!isCollapsed && (
@@ -73,8 +54,12 @@ const LeftSidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.gray[400]}>
-                  Overview
+                <Typography
+                  variant="h3"
+                  color={colors.blue[400]}
+                  fontWeight="bold"
+                >
+                  Plutus
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -97,14 +82,11 @@ const LeftSidebar = () => {
               <Box textAlign="center">
                 <Typography
                   variant="h2"
-                  color={colors.gray[400]}
+                  color={colors.blue[400]}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Demo User
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  The Plutus Group
+                  Caiden
                 </Typography>
               </Box>
             </Box>
@@ -123,7 +105,7 @@ const LeftSidebar = () => {
 
             <Typography
               variant="h6"
-              color={colors.gray[400]}
+              color={colors.blue[400]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               General
@@ -155,7 +137,7 @@ const LeftSidebar = () => {
 
             <Typography
               variant="h6"
-              color={colors.gray[400]}
+              color={colors.blue[400]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Settings
@@ -187,7 +169,7 @@ const LeftSidebar = () => {
 
             <Typography
               variant="h6"
-              color={colors.gray[400]}
+              color={colors.blue[400]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Visualization
