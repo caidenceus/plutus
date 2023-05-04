@@ -234,7 +234,7 @@ function Row2() {
             alignItems="center"
           >
             <Box>
-              <Typography variant="h3" fontWeight="600" color={colors.blue[100]}>
+              <Typography variant="h4" fontWeight="600" color={colors.blue[100]}>
                 Net Worth
               </Typography>
               <Typography variant="h5" fontWeight="bold" color={colors.teal[500]}>
@@ -272,7 +272,7 @@ function Row2() {
             p="15px">
               <Typography
                 color={colors.blue[100]}
-                variant='h3'
+                variant='h4'
                 fontWeight="600"
               >
                 Recent Transactions
@@ -295,7 +295,6 @@ function Row2() {
                         height: "30px",
                         width: "30px",
                         borderRadius: "50%",
-                        border: `2px solid ${colors.blue[900]}` 
                       }} />
                   </Box>
                   <Typography
