@@ -7,7 +7,7 @@ import MoneyOffIcon from '@mui/icons-material/MoneyOff';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import FunctionsIcon from '@mui/icons-material/Functions';
 
-function Row1() {
+function Row1({ totalROI }) {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
@@ -35,8 +35,8 @@ function Row1() {
           color={colors.orange[500]}
         />
         <StatBox
-          title="1,325,134"
-          subtitle="Monthly ROI"
+          title={totalROI}
+          subtitle="Total Assets"
           increase="+43%"
           icon={<TrendingUpIcon sx={{ fontSize: "26px" }}/>}
           color={colors.red[500]}

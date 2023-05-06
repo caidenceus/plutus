@@ -2,6 +2,7 @@ import { Box, Button, Typography, useTheme } from '@mui/material';
 import { tokens } from '../../theme';
 import Header from "./Header";
 import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
+import { useState, useEffect } from 'react';
 
 import Row1 from './gridRows/Row1';
 import Row2 from './gridRows/Row2';
@@ -10,6 +11,17 @@ import Row3 from './gridRows/Row3';
 function Home() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const [totalROI, setTotalROI] = useState(0);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/vanguard/v1/<user>/total-assets')
+    .then((response) => response.json())
+    .then((data) => setTotalROI(data['total']))
+    .catch((err) => {
+       console.log(err.message);
+    });
+  }, []);
 
   return (
     <Box m="20px">
@@ -41,7 +53,7 @@ function Home() {
         gap="20px"
       >
         { /* Overview tiles */ }
-        <Row1 />
+        <Row1 totalROI={totalROI} />
 
         { /* Net Worth Graph and Transactions list */ }
         <Row2 />
