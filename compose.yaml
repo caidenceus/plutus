@@ -1,0 +1,15 @@
+services:
+  vanguard_api:
+    build:
+      context: ./api/
+      dockerfile: vanguard.Dockerfile
+    container_name: vanguard_api
+    ports:
+      - '8000:5000'
+  
+  frontend:
+    build:
+      context: ./plutus
+    container_name: plutus
+    ports:
+      - '3000:3000'

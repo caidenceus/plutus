@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 import boto3
 import os
 
@@ -7,14 +7,10 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-# Dev
-import sys
-sys.path.insert(0, '../selenium_wrapper/')
-
 from vanguard import Vanguard
 from errors import *
 
-API = '/api/vanguard/v0'
+API = '/api/vanguard/v1'
 
 
 @app.route(f'{API}/<username>/total-assets')
