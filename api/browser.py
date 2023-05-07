@@ -12,7 +12,6 @@ class Browser(object):
         self.driver = None
         self.service = ChromeService(ChromeDriverManager().install())
         self.options = webdriver.ChromeOptions()
-
         # Disable parse certificate console errors
         self.options.add_experimental_option('excludeSwitches', ['enable-logging'])
 

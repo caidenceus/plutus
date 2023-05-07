@@ -1,4 +1,4 @@
-import { Box, Button, Typography, useTheme } from '@mui/material';
+import { Box, Button, useTheme } from '@mui/material';
 import { tokens } from '../../theme';
 import Header from "./Header";
 import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
@@ -15,20 +15,23 @@ function Home() {
   const [totalROI, setTotalROI] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/vanguard/v1/<user>/total-assets')
+    /*
+    fetch('http://localhost:5000/api/vanguard/v1/<username>/total-assets')
     .then((response) => response.json())
     .then((data) => setTotalROI(data['total']))
     .catch((err) => {
        console.log(err.message);
     });
+    */
   }, []);
 
   return (
-    <Box m="20px">
+    <Box className="root-component">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard!" />
 
+        {/* Download button */}
         <Box>
           <Button
             sx={{
@@ -36,7 +39,7 @@ function Home() {
               color: colors.blue[100],
               fontSize: "14px",
               fontWeight: "bold",
-              padding: "10px 20px",
+              padding: "12px 20px",
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />

@@ -18,3 +18,7 @@ code {
 #sidebar {
   background-color: white;
 }
+
+.root-component {
+  margin: 20px;
+}

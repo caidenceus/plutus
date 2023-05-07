@@ -15,7 +15,7 @@ function TopBar() {
     const colorMode = useContext(ColorModeContext);
 
     return (
-        <Box display="flex" justifyContent="space-between" padding="20px 20px 0 20px">
+        <Box display="flex" justifyContent="space-between" className="root-component">
             { /* Date */ }
             <Box>
                 <Typography

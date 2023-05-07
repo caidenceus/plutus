@@ -1,4 +1,4 @@
-import StatBox from './StatBox';
+import StatBox from '../../common/StatBox';
 import { tokens } from '../../../theme';
 import { useTheme } from '@mui/material';
 
@@ -16,28 +16,24 @@ function Row1({ totalROI }) {
         <StatBox
           title="12,361"
           subtitle="Monthly Income"
-          increase="+14%"
           icon={<AttachMoneyIcon sx={{ fontSize: "26px" }}/>}
           color={colors.teal[500]}
         />
         <StatBox
           title="431,225"
           subtitle="Monthly Spending"
-          increase="+21%"
           icon={<MoneyOffIcon sx={{ fontSize: "26px" }}/>}
           color={colors.yellow[500]}
         />
         <StatBox
           title="32,441"
           subtitle="Monthly Net Worth"
-          increase="+5%"
           icon={<FunctionsIcon sx={{ fontSize: "26px" }}/>}
           color={colors.orange[500]}
         />
         <StatBox
           title={totalROI}
           subtitle="Total Assets"
-          increase="+43%"
           icon={<TrendingUpIcon sx={{ fontSize: "26px" }}/>}
           color={colors.red[500]}
         />

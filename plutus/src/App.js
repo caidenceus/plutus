@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import TopBar from './components/common/TopBar';
 import Home from './components/home/Home';
+import Banking from './components/banking/Banking'
 import Faq from './components/faq/Faq';
 
 import { Routes, Route } from "react-router-dom";
@@ -21,6 +22,7 @@ function App() {
               <TopBar />
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/banking" element={<Banking />} />
                 <Route path="/faq" element={<Faq />} />
               </Routes>
             </main>
