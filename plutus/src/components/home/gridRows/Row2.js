@@ -269,7 +269,8 @@ function Row2() {
             alignItems="center"
             borderBottom={`4px solid ${colors.blue[900]}`}
             color={colors.blue[100]}
-            p="15px">
+            p="15px"
+          >
               <Typography
                 color={colors.blue[100]}
                 variant='h4'

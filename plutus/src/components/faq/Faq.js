@@ -16,25 +16,26 @@ function Faq() {
 
             <Accordion defaultExpanded>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography color={colors.greenAccent[500]} variant="h5">
-                        Question 1
+                    <Typography color={colors.teal[500]} variant="h4">
+                        How do I create an account?
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
-                        Answer to question 1.
+                    <Typography variant="h5">
+                        I created this project for personal use only. Currntly, there is no way
+                        to sign up / create an account.
                     </Typography>
                 </AccordionDetails>
             </Accordion>
 
             <Accordion defaultExpanded>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography color={colors.greenAccent[500]} variant="h5">
+                    <Typography color={colors.teal[500]} variant="h4">
                         Question 2
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
+                    <Typography variant="h5">
                         Answer to question 2.
                     </Typography>
                 </AccordionDetails>
@@ -42,12 +43,12 @@ function Faq() {
 
             <Accordion defaultExpanded>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography color={colors.greenAccent[500]} variant="h5">
+                    <Typography color={colors.teal[500]} variant="h4">
                         Question 3
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
+                    <Typography variant="h5">
                         Answer to question 3.
                     </Typography>
                 </AccordionDetails>

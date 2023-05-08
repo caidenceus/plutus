@@ -13,6 +13,7 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import MoneyOffIcon from '@mui/icons-material/MoneyOff';
 
 import profilePhoto from '../../assets/profile.png';
 import './LeftSidebar.css';
@@ -127,12 +128,12 @@ const LeftSidebar = () => {
               Investments
             </MenuItem>
             <MenuItem
-              component={<Link to="/goal" />}
-              icon={<SportsScoreOutlinedIcon />}
-              active={selected === 'goal'}
-              onClick={() => setSelected('goal')}
+              component={<Link to="/spending" />}
+              icon={<MoneyOffIcon />}
+              active={selected === 'spending'}
+              onClick={() => setSelected('spending')}
             >
-              Goal
+              Spending
             </MenuItem>
 
             <Typography
@@ -151,10 +152,10 @@ const LeftSidebar = () => {
               Profile
             </MenuItem>
             <MenuItem
-              component={<Link to="/financial-accounts" />}
+              component={<Link to="/financial-overview" />}
               icon={<AccountBalanceOutlinedIcon />}
-              active={selected === 'financial-accounts'}
-              onClick={() => setSelected('financial-accounts')}
+              active={selected === 'financial-overview'}
+              onClick={() => setSelected('financial-overview')}
             >
               Financial accounts
             </MenuItem>

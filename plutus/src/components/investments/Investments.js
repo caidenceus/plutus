@@ -5,35 +5,47 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import NumbersIcon from '@mui/icons-material/Numbers';
 
 import { tokens } from '../../theme';
-import BankAccount from './BankAccount';
+import InvestmentAccount from './InvestmentAccount';
 import StatBox from '../common/StatBox';
 
-function Banking() {
+function Investments() {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
     const accounts = [
         {
             id: 1,
-            type: 'Savings',
-            name: "Emprise Savings",
+            type: 'Brokerage',
+            name: "Vanguard Brockerage",
             amount: 95.00,
         },
         {
             id: 2,
-            name: "Emprise Checking",
-            type: 'Checking',
+            name: "Vanguard Total Stockt Market Index",
+            type: 'ROTH IRA',
             amount: 2654.12,
         },
         {
             id: 3,
-            type: 'Savings',
-            name: "Bank of America Savings",
+            type: '401 (k)',
+            name: "ADP Retirement Services",
+            amount: 10000.00,
+        },
+        {
+            id: 4,
+            type: 'Brokerage',
+            name: "Fidelity 2% Cash Back Rewards",
+            amount: 10000.00,
+        },
+        {
+            id: 5,
+            type: 'Index Fund',
+            name: "Vanguard Total Market Bond Index",
             amount: 10000.00,
         }
     ];
 
-    function totalSavingsAndChecking() {
+    function totalBrokerageAndInvestments() {
         let total = 0;
         for (const account of accounts) {
             total += account.amount;
@@ -41,20 +53,20 @@ function Banking() {
         return total.toFixed(2);
     }
 
-    function totalSavings() {
+    function totalBrokerage() {
         let total = 0;
         for (const account of accounts) {
-            if (account.type === 'Savings') {
+            if (account.type === 'Brokerage') {
                 total += account.amount;
             }
         }
         return total.toFixed(2);
     }
 
-    function totalChecking() {
+    function totalInvestments() {
         let total = 0;
         for (const account of accounts) {
-            if (account.type === 'Checking') {
+            if (account.type !== 'Brokerage') {
                 total += account.amount;
             }
         }
@@ -72,20 +84,20 @@ function Banking() {
                 pb="30px"
             >
                 <StatBox
-                    title={totalSavingsAndChecking()}
-                    subtitle="Total Savings & Checking"
+                    title={totalBrokerageAndInvestments()}
+                    subtitle="Total Assets"
                     icon={<AccountBalanceIcon sx={{ fontSize: "26px" }}/>}
                     color={colors.teal[500]}
                 />
                 <StatBox
-                    title={totalSavings()}
-                    subtitle="Total Savings"
+                    title={totalInvestments()}
+                    subtitle="Total Investment Allocation"
                     icon={<SavingsIcon sx={{ fontSize: "26px" }}/>}
                     color={colors.yellow[500]}
                 />
                 <StatBox
-                    title={totalChecking()}
-                    subtitle="Total Checking"
+                    title={totalBrokerage()}
+                    subtitle="Total Brokerage Allocation"
                     icon={<AttachMoneyIcon sx={{ fontSize: "26px" }}/>}
                     color={colors.orange[500]}
                 />
@@ -126,7 +138,7 @@ function Banking() {
 
             { /* List of accounts */ }
             <Box>
-                <BankAccount 
+                <InvestmentAccount 
                     key='table-legend'
                     name='Account Name'
                     type=''
@@ -136,7 +148,7 @@ function Banking() {
                     icons={false}
                 />
                 {accounts.map((account) => {
-                    return <BankAccount
+                    return <InvestmentAccount
                         key={`bank-account-${account.id}`}
                         name={account.name}
                         type={account.type}
@@ -151,4 +163,4 @@ function Banking() {
     );
 }
 
-export default Banking;
+export default Investments;
