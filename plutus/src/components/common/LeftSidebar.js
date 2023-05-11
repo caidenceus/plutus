@@ -103,7 +103,6 @@ const LeftSidebar = () => {
               Dashboard
             </MenuItem>
 
-
             <Typography
               variant="h6"
               color={colors.blue[400]}

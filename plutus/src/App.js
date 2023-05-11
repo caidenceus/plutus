@@ -6,6 +6,7 @@ import TopBar from './components/common/TopBar';
 import Home from './components/home/Home';
 import Banking from './components/banking/Banking';
 import Investments from './components/investments/Investments';
+import Profile from './components/profile/Profile';
 import Faq from './components/faq/Faq';
 import FinancialAccounts from './components/financialAccounts/FinancialAccounts';
 
@@ -29,6 +30,7 @@ function App() {
                 <Route path='/investments' element={<Investments />} />
                 <Route path='/spending' element={<Spending />} />
                 <Route path='/financial-overview' element={<FinancialAccounts />} />
+                <Route path='/profile' element={<Profile />} />
                 <Route path="/faq" element={<Faq />} />
               </Routes>
             </main>

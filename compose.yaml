@@ -1,15 +1,55 @@
 services:
-  vanguard_api:
+  api:
     build:
       context: ./api/
       dockerfile: vanguard.Dockerfile
-    container_name: vanguard_api
     ports:
-      - '8000:5000'
-  
+      - '5000:5000'
+
   frontend:
     build:
       context: ./plutus
-    container_name: plutus
+      dockerfile: plutus.Dockerfile
     ports:
       - '3000:3000'
+
+#  poller:
+#    build:
+#      context: ./poller/
+#      dockerfile: .
+
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/usr/share/postgresql/data
+
+  elasticsearch:
+    image: elasticsearch:8.2.2
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - xpack.security.enabled=false
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    ports:
+      -  '9200:9200'
+
+  kibana:
+    image: kibana:8.2.2
+    ports:
+      - '5601:5601'
+    depends_on:
+      - elasticsearch
+
+
+volumes:
+  es_data:
+    driver: local
+  db:
+    driver: local
