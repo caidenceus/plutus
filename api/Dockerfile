@@ -6,7 +6,7 @@ COPY browser.py ./
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
-COPY ./fidelity .
+COPY ./plutus_api .
 
 EXPOSE 5000
 
