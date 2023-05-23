@@ -27,7 +27,7 @@ jobs:
       - name: Replace YAML Action
         uses: ./.github/actions/replace-action
         with:
-          files: 'k8s/frontend-deploy.yaml'
+          files: '${{ vars.OPS_PATH }}/frontend-deploy.yaml'
           replacements: '$IMAGE=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.K8S_CLUSTER_REGION }}.amazonaws.com/plutus:1.1'
 
       - name: Build, tag, and push frontend docker image to ECR
@@ -44,5 +44,5 @@ jobs:
 
       - name: Deploy to EKS
         run: |
-          kubectl apply -f ${{ variables.OPS_PATH }}/frontend-deploy.yaml
-          kubectl apply -f ${{ variables.OPS_PATH }}/service.yaml
+          kubectl apply -f ${{ vars.OPS_PATH }}/frontend-deploy.yaml
+          kubectl apply -f ${{ vars.OPS_PATH }}/service.yaml
