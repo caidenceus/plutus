@@ -24,11 +24,13 @@ jobs:
         uses: actions/checkout@v3
 
       # Import GitHub secrets into K8s manifest files
-      - name: Replace YAML Action
-        uses: ./.github/actions/replace-action
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v3
         with:
-          files: '${{ vars.OPS_PATH }}/frontend-deploy.yaml'
-          replacements: '$IMAGE=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.K8S_CLUSTER_REGION }}.amazonaws.com/plutus:1.1'
+          find: "$IMAGE"
+          replace: '$IMAGE=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.K8S_CLUSTER_REGION }}.amazonaws.com/plutus:1.1'
+          include: "./k8s/frontend-deploy.yaml"
+          regex: false
 
       - name: Build, tag, and push frontend docker image to ECR
         env:
