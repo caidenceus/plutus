@@ -1,0 +1,48 @@
+name: Deploy
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v3
+        id: install
+
+      # This also installs awscli
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.K8S_CLUSTER_REGION }}
+
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v1
+        id: login-ecr
+
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Import GitHub secrets into K8s manifest files
+      - name: Replace YAML Action
+        uses: datamonsters/replace-action
+        with:
+          files: 'k8s/frontend-deploy.yaml'
+          replacements: '$IMAGE=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_PRIVATE_REPO }}:1.1'
+
+      - name: Build, tag, and push frontend docker image to ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: ${{ secrets.ECR_PRIVATE_REPO }}
+          IMAGE_TAG: 1.1
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f frontend.Dockerfile ${{ variables.OPS_PATH }}
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+
+      - name: Generate kubeconfig
+        run: aws eks update-kubeconfig --name ${{ secrets.K8S_CLUSTER_NAME }} --region ${{ secrets.K8S_CLUSTER_REGION }}
+
+      - name: Deploy to EKS
+        run: |
+          kubectl apply -f ${{ variables.OPS_PATH }}/frontend-deploy.yaml
+          kubectl apply -f ${{ variables.OPS_PATH }}/service.yaml

@@ -7,4 +7,16 @@ Working proof-of-concept full stack application to aggregate data accross bankin
 
 A poll cycle will poll for financial data from Fidelity, Vanguard, and many other financial institutions every six hours. The data is placed into a PostgreSQL database that is presented to the frontend via RESTful API.
 
-The frontend is written in React and JavaScript, the backend is written in Python an Flask.
+The frontend is written in React and JavaScript, the backend is written in Python an Django.
+
+### Setup
+
+`eksctl create cluster --name <cluster name> --region <region> --nodegroup-name linux-nodes --node-type t2.micro --nodes 2`
+
+### Teardown
+
+`eksctl delete cluster --name <cluster name> --region <region>`
+
+### Generate kubeconfig
+
+`aws eks update-kubeconfig --region <region> --name <cluster name>`

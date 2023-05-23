@@ -14,25 +14,25 @@ function Row1({ totalROI }) {
     return (
       <>
         <StatBox
-          title="12,361"
+          title="5,642.11"
           subtitle="Monthly Income"
           icon={<AttachMoneyIcon sx={{ fontSize: "26px" }}/>}
           color={colors.teal[500]}
         />
         <StatBox
-          title="431,225"
+          title="2,355.69"
           subtitle="Monthly Spending"
           icon={<MoneyOffIcon sx={{ fontSize: "26px" }}/>}
           color={colors.yellow[500]}
         />
         <StatBox
-          title="32,441"
+          title="3,286.42"
           subtitle="Monthly Net Worth"
           icon={<FunctionsIcon sx={{ fontSize: "26px" }}/>}
           color={colors.orange[500]}
         />
         <StatBox
-          title={totalROI}
+          title="86,123.91"
           subtitle="Total Assets"
           icon={<TrendingUpIcon sx={{ fontSize: "26px" }}/>}
           color={colors.red[500]}

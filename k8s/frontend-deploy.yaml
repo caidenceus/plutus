@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plutus
+  labels:
+    app: plutus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plutus
+  template:
+    metadata:
+      labels:
+        app: plutus
+    spec:
+      containers:
+        - name: plutus
+          image: $IMAGE
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
