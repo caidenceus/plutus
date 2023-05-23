@@ -25,7 +25,7 @@ jobs:
 
       # Import GitHub secrets into K8s manifest files
       - name: Replace YAML Action
-        uses: datamonsters/replace-action
+        uses: ./.github/actions/replace-action
         with:
           files: 'k8s/frontend-deploy.yaml'
           replacements: '$IMAGE=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.K8S_CLUSTER_REGION }}.amazonaws.com/plutus:1.1'
