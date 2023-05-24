@@ -1,0 +1,13 @@
+version: '3'
+services:
+  database-source:
+    image: postgres:latest
+    container_name: "postgres-test-db"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=testing
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init-testing-database/init.sql:/docker-entrypoint-initdb.d/init.sql
