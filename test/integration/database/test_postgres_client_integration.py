@@ -2,11 +2,13 @@ import unittest
 
 import pandas as pd
 import os
-import subprocess
+import time
 
 # TODO: temp fix to import backend (this is the path from the caller location to backend)
 import sys
 sys.path.insert(0, './')
+
+import os
 
 from backend.database.postgres_client import PostgresClient
 from integration.resources.integration_test_abc import IntegrationTestABC
@@ -19,6 +21,8 @@ class PostgresClientIntegrationTest(unittest.TestCase, IntegrationTestABC):
 
     @classmethod
     def tearDownClass(cls) -> None:
+        os.system('docker container logs postgres-test-db > docker_postgres.log')
+        time.sleep(5)
         cls.tear_down()
 
     def test_should_retrieve_user(self):
