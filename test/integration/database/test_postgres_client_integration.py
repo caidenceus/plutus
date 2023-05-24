@@ -22,7 +22,7 @@ class PostgresClientIntegrationTest(unittest.TestCase, IntegrationTestABC):
         cls.tear_down()
 
     def test_should_retrieve_user(self):
-         # given
+        # given
         postgres_client_config = self.postgres_client_config
         postgres_client = PostgresClient(postgres_client_config)
 

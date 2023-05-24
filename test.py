@@ -1,1 +1,0 @@
-from backend.model.user import User
