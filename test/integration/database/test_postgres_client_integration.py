@@ -9,7 +9,6 @@ sys.path.insert(0, './')
 
 from backend.database.postgres_client import PostgresClient
 from integration.resources.integration_test_abc import IntegrationTestABC
-import time
 
 
 class PostgresClientIntegrationTest(unittest.TestCase, IntegrationTestABC):
@@ -21,21 +20,16 @@ class PostgresClientIntegrationTest(unittest.TestCase, IntegrationTestABC):
     def tearDownClass(cls) -> None:
         cls.tear_down()
 
-    #def test_should_retrieve_user(self):
+    def test_should_retrieve_user(self):
         # given
-        #postgres_client_config = self.postgres_client_config
-        #postgres_client = PostgresClient(postgres_client_config)
+        postgres_client_config = self.postgres_client_config
+        postgres_client = PostgresClient(postgres_client_config)
 
         # when
-        #user_df = postgres_client.retrieve_user('test_user1')
+        user_df = postgres_client.retrieve_user('test_user1')
 
         # then
-        #self.assertIsNotNone(user_df)
-        #self.assertEqual(user_df.iloc[0]['username'], 'test_user1')
-        #self.assertEqual(user_df.iloc[0]['password'], 'secure_password')
-        #self.assertEqual(user_df.iloc[0]['email'], 'test1@test.com')
-    
-    def test(self):
-        time.sleep(10)
-        print(subprocess.check_output(['docker', 'ps']))
-        time.sleep(10)
+        self.assertIsNotNone(user_df)
+        self.assertEqual(user_df.iloc[0]['username'], 'test_user1')
+        self.assertEqual(user_df.iloc[0]['password'], 'secure_password')
+        self.assertEqual(user_df.iloc[0]['email'], 'test1@test.com')
