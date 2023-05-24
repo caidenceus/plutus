@@ -13,8 +13,13 @@ jobs:
       - name: Backend integration tests
         run: pytest -vs test --html pytest.html
       
+      - name: Write docker compose logs
+        run: docker-compose logs > docker_compose.log
+      
       - name: Save test artifacts
         uses: actions/upload-artifact@v3
         with:
           name: test-artifacts
-          path: pytest.html
+          path: |
+            pytest.html
+            docker_compose.log
