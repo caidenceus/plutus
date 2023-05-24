@@ -3,6 +3,7 @@ from pathlib import Path
 
 import psycopg2
 import testcontainers.compose
+import time
 
 from backend.config.postgres_config import PostgresClientConfig
 
@@ -39,6 +40,9 @@ class IntegrationTestABC(ABC):
         # Start Database
         cls.compose = testcontainers.compose.DockerCompose(cls.COMPOSE_PATH.as_posix())
         cls.compose.start()
+
+        # Allow database to come online
+        time.sleep(15)
 
     @classmethod
     def tear_down(cls):
