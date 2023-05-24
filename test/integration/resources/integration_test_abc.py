@@ -43,7 +43,6 @@ class IntegrationTestABC(ABC):
     @classmethod
     def tear_down(cls):
         cls.compose.stop()
-        cls.server.shutdown_server()
 
     def create_connection(self):
         return psycopg2.connect(
