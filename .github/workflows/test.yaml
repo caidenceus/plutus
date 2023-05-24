@@ -3,16 +3,23 @@ on: workflow_dispatch
 jobs:
   integration-testing:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+      
+      - name: Cache pip packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: python3-pip-packages-${{ hashFiles('requirements.txt') }}
 
       - name: Install requirements.txt
         run: pip install -r requirements.txt
 
       - name: Backend integration tests
         run: pytest -vs test --html pytest.html
-      
+
       # Docker logs are written by the test that user the containers
       - name: Save test artifacts
         uses: actions/upload-artifact@v3
