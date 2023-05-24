@@ -12,19 +12,19 @@ class PostgresClient:
 
     def retrieve_user(self, username: str) -> pd.DataFrame:
         connection = self.__create_connection()
-        query: str = f"select * from test.users where username = '{username}';"
+        query: str = f"select * from usertesting.user where username = '{username}';"
         return pd.read_sql(query, connection)
 
     def retrieve_users(self, usernames: List[str]) -> pd.DataFrame:
         connection = self.__create_connection()
-        query: str = f"select * from test.users where username in {tuple(usernames)};"
+        query: str = f"select * from usertesting.user where username in {tuple(usernames)};"
         return pd.read_sql(query, connection)
 
     def save_user(self, user_df: pd.DataFrame) -> None:
         connection = self.__create_connection()
         cursor = connection.cursor()
         query: str = """
-            INSERT INTO test.user (username, password, email) values ('%s','%s','%s');
+            INSERT INTO usertesting.user (username, password, email) values ('%s','%s','%s');
             """ % (user_df.iloc[0]['username'],
                    user_df.iloc[0]['password'],
                    user_df.iloc[0]['email'])

@@ -1,0 +1,14 @@
+name: Test
+on: workflow_dispatch
+jobs:
+  integration-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install requirements.txt
+        run: pip install -r requirements.txt
+
+      - name: Backend integration tests
+        run: pytest test --html results.html
